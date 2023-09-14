@@ -53,7 +53,7 @@ app.post('/new', async (req, res) => {
       const query = 'INSERT INTO `movies` (titulo, sinopse, duracao, imagem, dataLancamento) VALUES (?, ?, ?, ?, ?)';
       const values = [titulo, sinopse, duracao, imagemBinario, dataLancamento];
   
-      const [result] = await connection.query(query, values);
+      const [result] =  connection.execute(query, values);
   
       res.status(201).json({ message: 'Filme inserido com sucesso' });
     } catch (error) {
